@@ -98,6 +98,7 @@ namespace Trivial.Utilities
             R.HasError ? R.Error : R.Value;
 
         public static Result<T> ToResult<T>(this T Value) => Value;
+        public static Result<T> ToResult<T>(this Exception E) => E;
         public static Result<T> ToResult<T>(this Nullable<T> Value) where T : struct
             => Value.HasValue ? Value.Value : new NullReferenceException("Nullable<T> was null when converting to Result<T>");
         public static Result<T> ToResult<T>(this Maybe<T> M) => M.HasValue ? M.Value : new NullReferenceException("Maybe<T> was null when converting to Result<T>");
